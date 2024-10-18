@@ -6,8 +6,8 @@ interface ToastProps {
 
 export default function Toast({ children, className }: ToastProps): React.ReactElement {
     return (
-        <div className="text-3xl">
-            <h1 className="text-red-500">Toast</h1>
+        <div className="">
+            <h1 className="underline ">Toast</h1>
             {children}
         </div>
     )
