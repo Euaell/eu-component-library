@@ -5,6 +5,7 @@ interface BadgeProps {
     className?: string;
     variant?: 'square' | 'pill';
     color?: 'gray' | 'red' | 'yellow' | 'green' | 'blue' | 'indigo' | 'purple' | 'pink';
+    [x: string]: any;
 }
 
 const colors = {
@@ -18,7 +19,7 @@ const colors = {
     pink: 'bg-[#FCE7F3] text-[#9D174D]',
 }
 
-export default function Badge({ children, className, variant = 'square', color = 'gray' }: BadgeProps): React.ReactElement {
+export default function Badge({ children, className, variant = 'square', color = 'gray', ...rest }: BadgeProps): React.ReactElement {
     return (
         <div className={twMerge(
             twJoin(
@@ -27,7 +28,7 @@ export default function Badge({ children, className, variant = 'square', color =
                 colors[color],
             ),
             className
-        )}>
+        )} {...rest}>
             {children}
         </div>
     )

@@ -9,6 +9,7 @@ interface BannerProps {
 	children?: string;
 	className?: string;
 	status?: 'info' | 'success' | 'warning' | 'error';
+    [x: string]: any;
 }
 
 const colors = {
@@ -34,7 +35,7 @@ const colors = {
 	},
 }
 
-export default function Banner({ title, children, className, status = 'info' }: BannerProps): React.ReactElement {
+export default function Banner({ title, children, className, status = 'info', ...rest }: BannerProps): React.ReactElement {
 
 	return (
 		<div className={twMerge(
@@ -43,7 +44,7 @@ export default function Banner({ title, children, className, status = 'info' }: 
 				colors[status].main_container,
 			),
 			className
-		)}>
+		)} {...rest}>
 			<div className={twJoin(
 				"text-base font-semibold",
 				colors[status].title_container,
