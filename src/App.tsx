@@ -7,7 +7,7 @@ function App() {
 	return (
 		<>
 		
-			{/* <BannerAndBadge /> */}
+			<BannerAndBadge />
 
 			<CardDisplay />
 		</>
@@ -47,9 +47,9 @@ function BannerAndBadge() {
 
 function CardDisplay() {
 	return (
-		<div className='bg-gray-200'>
+		<div className='bg-gray-200 p-8'>
 			
-			<Card title='First Title' icon={<img src={testSvg} alt='test svg' />}>
+			<Card title='First Title' icon={<img src={testSvg} alt='test svg' />} iconBgColor='#E30313'>
 				<p>This is a card</p>
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ad quidem labore architecto maiores possimus, porro cum placeat eligendi eius necessitatibus doloremque iure minima perferendis minus alias. Suscipit, aspernatur atque?</p>
 			</Card>
@@ -57,6 +57,10 @@ function CardDisplay() {
 			<Card title='Awesome Title' icon={<img src={testSvg} alt='test svg' />}>
 				<p>This is a card</p>
 				<p>Lorem iplaceat eligendi eius necessitatibus doloremque iure minima perferendis minus alias. </p>
+			</Card>
+
+			<Card title='Title'>
+				<p>Simpler card</p>
 			</Card>
 		</div>
 	)
