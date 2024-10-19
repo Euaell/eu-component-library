@@ -1,15 +1,18 @@
 import './App.css'
-import { Badge, Banner, Card, Toast } from './components'
+import { Badge, Banner, Card, Testimonials, Toast } from './components'
 import testSvg from './test.svg'
+import testimonialImg from './testimonial-image.png'
 
 function App() {
 	
 	return (
 		<>
 		
-			<BannerAndBadge />
+			{/* <BannerAndBadge /> */}
 
-			<CardDisplay />
+			{/* <CardDisplay /> */}
+
+            <TestimonialDisplay />
 		</>
 	)
 }
@@ -64,6 +67,19 @@ function CardDisplay() {
 			</Card>
 		</div>
 	)
+}
+
+function TestimonialDisplay() {
+    return (
+        <div className='bg-gray-200 h-max'>
+            <Testimonials
+                image={testimonialImg}
+                quote='This is a testimonial quote'
+                author='John Doe'
+                position='CEO'
+            />
+        </div>
+    )
 }
 
 export default App
