@@ -155,3 +155,8 @@ We welcome contributions to our library. Please read our [Contributing Guide](CO
 ## License
 
 This library is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+
+## Project Indexing
+```bash
+python .\script.py -d . -o project_content.txt
+``` 
