@@ -29,6 +29,8 @@ interface AreaChartProps {
 	className?: string;
 	showGrid?: boolean;
 	children?: Readonly<React.ReactNode>;
+	showTooltip?: boolean;
+	tooltipContent?: (data: DataPoint) => React.ReactNode;
 }
 
 export default function AreaChart({
@@ -45,6 +47,8 @@ export default function AreaChart({
 	className,
 	showGrid = true,
 	children,
+	showTooltip = true,
+	tooltipContent,
 }: AreaChartProps): React.ReactElement {
 	// Calculate inner width and height
 	const innerWidth = width - margin.left - margin.right;
@@ -79,11 +83,29 @@ export default function AreaChart({
 			margin,
 		});
 
+	// Tooltip Content
+	// Default tooltip content function
+	function defaultTooltipContent(d: DataPoint) {
+		return (
+			<div>
+				<strong>
+					x:{' '}
+					{xAccessor(d) instanceof Date
+					? (xAccessor(d) as Date).toLocaleDateString()
+					: xAccessor(d) as number}
+				</strong>
+				<div>y: {yAccessor(d)}</div>
+			</div>
+		)
+	}
+
+	const tooltipRenderer = tooltipContent || defaultTooltipContent;
+
 	const gradientId = `area-gradient-${Math.random().toString(36).substr(2, 9)}`;
 
 	return (
-		<>
-			<svg width={width} height={height} className={twMerge('overflow-visible', className)}>
+		<div className={twMerge('relative overflow-visible', className)}>
+			<svg width={width} height={height}>
 				{/* Gradient Definition */}
 				<defs>
 					<linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
@@ -165,7 +187,7 @@ export default function AreaChart({
 			</svg>
 
 			{/* Tooltip */}
-			{tooltipData && (
+			{showTooltip && tooltipData && (
 				<TooltipWithBounds
 					top={tooltipTop}
 					left={tooltipLeft}
@@ -175,18 +197,9 @@ export default function AreaChart({
 						color: 'white',
 					}}
 				>
-					<div>
-						<strong>
-							x:{' '}
-							{xAccessor(tooltipData) instanceof Date
-								? (xAccessor(tooltipData) as Date).toLocaleDateString()
-								: xAccessor(tooltipData) as number
-							}
-						</strong>
-					</div>
-					<div>y: {yAccessor(tooltipData)}</div>
+					{tooltipRenderer(tooltipData)}
 				</TooltipWithBounds>
 			)}
-		</>
+		</div>
 	)
 }

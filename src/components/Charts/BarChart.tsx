@@ -7,6 +7,10 @@ import { AxisBottom, AxisLeft } from '@visx/axis';
 import { twMerge } from 'tailwind-merge';
 import { useTooltip, TooltipWithBounds, defaultStyles } from '@visx/tooltip';
 import { localPoint } from '@visx/event';
+import { BarGroupBar,
+	// import `BarGroup` from '@visx/shape/lib/types' to get the types with a different name
+	BarGroup as BarGroupType,
+	 } from '@visx/shape/lib/types';
 
 interface BarChartProps {
 	data: any[];
@@ -68,10 +72,28 @@ export default function BarChart({
 		y: number;
 		x0: string;
 	}>()
+	// FIXME: The tooltip is not showing up
+	function handleMouseMove(event: React.MouseEvent<SVGRectElement>, bar: BarGroupBar<string>, barGroup: BarGroupType<string>) {
+		const coords = localPoint(event) || { x: 0, y: 0 };
+		const x = coords.x - margin.left;
+		const y = coords.y - margin.top;
+
+		showTooltip({
+			tooltipData: {
+				key: bar.key,
+				value: bar.value,
+				x: coords.x,
+				y: coords.y,
+				x0: barGroup.x0.toString(),
+			},
+			tooltipLeft: x + margin.left,
+			tooltipTop: y + margin.top,
+		});
+	}
 
 	return (
-		<>
-			<svg width={width} height={height} className={twMerge('overflow-visible', className)}>
+		<div className={twMerge('relative overflow-visible', className)}>
+			<svg width={width} height={height}>
 				<Group left={margin.left} top={margin.top}>
 					{/* Axes */}
 					<AxisBottom
@@ -119,23 +141,20 @@ export default function BarChart({
 										width={bar.width}
 										height={bar.height}
 										fill={bar.color}
-										onMouseMove={(event) => {
-											const coords = localPoint(event);
-											// console.log(coords)
-											showTooltip({
-												tooltipData: {
-													key: bar.key,
-													value: bar.value,
-													x: coords?.x ?? 0,
-													y: coords?.y ?? 0,
-													x0: barGroup.x0.toString(),
-												},
-												tooltipLeft: coords?.x,
-												tooltipTop: coords?.y,
-											})
-										}}
+										onMouseMove={(event) => handleMouseMove(event, bar, barGroup)}
 										onMouseLeave={() => hideTooltip()}
-									/>
+									>
+										<text
+											x={bar.x + bar.width / 2}
+											y={bar.y - 5} // Position above the bar
+											fill="#000"
+											fontSize={10}
+											textAnchor="middle"
+											z={9999} // FIXME: Ensure the text is on top, but it's not working
+										>
+											{bar.value}
+										</text>
+									</rect>
 								))}
 							</Group>
 						))}
@@ -146,7 +165,7 @@ export default function BarChart({
 						<TooltipWithBounds
 							top={tooltipTop}
 							left={tooltipLeft}
-							style={{ ...defaultStyles, backgroundColor: 'rgba(0,0,0,0.75)', color: 'white' }}
+							style={{ ...defaultStyles, backgroundColor: 'rgba(0,0,0,0.75)', color: '#fff' }}
 						>
 							<div>
 								<strong>{tooltipData.x0}</strong>
@@ -156,6 +175,6 @@ export default function BarChart({
 					)}
 				</Group>
 			</svg>
-		</>
+		</div>
 	)
 }

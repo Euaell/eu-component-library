@@ -1,5 +1,5 @@
 import './App.css'
-import { AreaChart, Badge, Banner, BarChart, Card, LineChart, PieChart, ScatterPlot, SmoothAreaChart, SmoothLineChart, Testimonials, Toast } from './components'
+import { AreaChart, Badge, Banner, BarChart, Card, LineChart, PieChart, ScatterPlot, Testimonials, Toast } from './components'
 import testSvg from './test.svg'
 import testimonialImg from './testimonial-image.png'
 
@@ -14,19 +14,16 @@ function App() {
 
 			{/* <TestimonialDisplay /> */}
 
-			{/* <LineChartDisplay /> */}
+			<LineChartDisplay />
 
-			{/* <AreaChartDisplay /> */}
+			<AreaChartDisplay />
 
-			{/* <BarChartDisplay /> */}
+			<BarChartDisplay />
 
-			{/* <PieChartDisplay /> */}
+			<PieChartDisplay />
 
-			{/* <ScatterPlotDisplay /> */}
+			<ScatterPlotDisplay />
 
-			{/* <SmoothLineChartDisplay /> */}
-
-			<SmoothAreaChartDisplay />
 		</>
 	)
 }
@@ -114,6 +111,7 @@ function LineChartDisplay() {
 				height={400}
 				xScaleType="time"
 				strokeColor="#10B981" // Tailwind green-500
+				curveType='monotoneX'
 			/>
 		</div>
 	)
@@ -142,6 +140,9 @@ function AreaChartDisplay() {
 				height={400}
 				xScaleType="time"
 				areaColor="#3B82F6" // Tailwind blue-500
+				tooltipContent={(d) => (
+					<strong>{d.x.toLocaleString()}</strong>
+				)}
 			/>
 		</div>
 	);
@@ -194,54 +195,6 @@ function ScatterPlotDisplay() {
 	return (
 		<div className="p-4">
 			<ScatterPlot data={sampleData} width={600} height={400} />
-		</div>
-	)
-}
-
-function SmoothLineChartDisplay() {
-	const sampleData = [
-		{ x: new Date(2023, 0, 1), y: 50 },
-		{ x: new Date(2023, 0, 2), y: 10 },
-		{ x: new Date(2023, 0, 3), y: 20 },
-		{ x: new Date(2023, 0, 4), y: 80 },
-		{ x: new Date(2023, 0, 5), y: 30 },
-	]
-
-	return (
-		<div className="p-4">
-			<SmoothLineChart
-				data={sampleData}
-				width={600}
-				height={400}
-				xScaleType="time"
-				strokeColor="#3B82F6"
-			/>
-		</div>
-	)
-}
-
-function SmoothAreaChartDisplay() {
-	const sampleData = [
-		{ x: new Date(2023, 0, 1), y: 50 },
-		{ x: new Date(2023, 0, 2), y: 30 },
-		{ x: new Date(2023, 0, 3), y: 80 },
-		{ x: new Date(2023, 0, 4), y: 20 },
-		{ x: new Date(2023, 0, 5), y: 60 },
-	]
-
-	return (
-		<div className="p-4">
-			<SmoothAreaChart
-				data={sampleData}
-				width={600}
-				height={400}
-				xScaleType="time"
-				// areaColor="#10B981" // Tailwind green-500
-				// Tailwind sky-700
-				areaColor="#1533FB"
-				// strokeColor="#10B981"
-				strokeColor="#2563EB"
-			/>
 		</div>
 	)
 }

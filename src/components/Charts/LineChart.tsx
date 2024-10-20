@@ -6,7 +6,7 @@ import { AxisBottom, AxisLeft } from '@visx/axis';
 import { GridRows, GridColumns } from '@visx/grid';
 import { twMerge } from 'tailwind-merge';
 import { TooltipWithBounds, defaultStyles } from '@visx/tooltip';
-
+import { curveLinear, curveMonotoneX, curveBasis, curveCardinal } from '@visx/curve';
 import { useTooltipHelper } from './hooks/useTooltipHelper';
 
 interface DataPoint {
@@ -27,7 +27,18 @@ interface LineChartProps {
 	strokeWidth?: number;
 	className?: string;
 	showGrid?: boolean;
+    curveType?: 'linear' | 'monotoneX' | 'cardinal' | 'basis';
 	children?: Readonly<React.ReactNode>;
+    showTooltip?: boolean;
+    tooltipContent?: (data: DataPoint) => React.ReactNode;
+}
+
+// Map curveType to actual curve functions
+const curveMap = {
+    linear: curveLinear,
+    monotoneX: curveMonotoneX,
+    cardinal: curveCardinal,
+    basis: curveBasis,
 }
 
 export default function LineChart({
@@ -42,11 +53,17 @@ export default function LineChart({
 	strokeWidth = 2,
 	className,
 	showGrid = true,
+    curveType = 'linear',
 	children,
+    showTooltip = true,
+    tooltipContent,
 }: LineChartProps): React.ReactElement {
 	// Calculate inner width and height
 	const innerWidth = width - margin.left - margin.right;
 	const innerHeight = height - margin.top - margin.bottom;
+
+    // Get the curve function
+    const curveFunction = curveMap[curveType];
 
 	// Define scales
 	const xScale =
@@ -76,10 +93,28 @@ export default function LineChart({
 			yScale,
 			margin,
 		});
+    
+    // Tooltip Content
+    // Default tooltip content function
+    function defaultTooltipContent(d: DataPoint) {
+        return (
+            <div>
+                <strong>
+                    x:{' '}
+                    {xAccessor(d) instanceof Date
+                    ? (xAccessor(d) as Date).toLocaleDateString()
+                    : xAccessor(d) as number}
+                </strong>
+                <div>y: {yAccessor(d)}</div>
+            </div>
+        )
+    }
+
+    const tooltipRenderer = tooltipContent || defaultTooltipContent;
 
 	return (
-		<>
-			<svg width={width} height={height} className={twMerge('overflow-visible', className)}>
+		<div className={twMerge('relative overflow-visible', className)}>
+			<svg width={width} height={height}>
 				<g transform={`translate(${margin.left},${margin.top})`}>
 					{/* Optional Grid */}
 					{showGrid && (
@@ -123,6 +158,8 @@ export default function LineChart({
 						y={(d) => yScale(yAccessor(d)) ?? 0}
 						stroke={strokeColor}
 						strokeWidth={strokeWidth}
+                        cursor={tooltipData ? 'pointer' : 'default'}
+                        curve={curveFunction}
 					/>
 
 					{/* Additional children (e.g., tooltips) */}
@@ -141,7 +178,7 @@ export default function LineChart({
 			</svg>
 
 			{/* Tooltip */}
-			{tooltipData && (
+			{showTooltip && tooltipData && (
 				<TooltipWithBounds
 					top={tooltipTop}
 					left={tooltipLeft}
@@ -151,18 +188,9 @@ export default function LineChart({
 						color: 'white',
 					}}
 				>
-					<div>
-						<strong>
-							x:{' '}
-							{xAccessor(tooltipData) instanceof Date
-								? (xAccessor(tooltipData) as Date).toLocaleDateString()
-								: xAccessor(tooltipData) as number
-							}
-						</strong>
-					</div>
-					<div>y: {yAccessor(tooltipData)}</div>
+					{tooltipRenderer(tooltipData)}
 				</TooltipWithBounds>
 			)}
-		</>
+		</div>
 	)
 }
