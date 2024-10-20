@@ -27,6 +27,17 @@ def parse_arguments():
     return parser.parse_args()
 
 
+def is_binary(file_path):
+    try:
+        with open(file_path, 'rb') as file:
+            chunk = file.read(1024)
+            if b'\0' in chunk:
+                return True
+            text_chars = bytearray({7, 8, 9, 10, 12, 13, 27} | set(range(0x20, 0x100)))
+            return not all(c in text_chars for c in chunk)
+    except Exception as e:
+        return True  # Treat unreadable files as binary
+
 def should_exclude_file(file_path):
     # Exclude based on extension
     if file_path.suffix.lower() in EXCLUDED_EXTENSIONS:
@@ -34,12 +45,10 @@ def should_exclude_file(file_path):
     # Exclude specific files
     if file_path.name.lower() in EXCLUDED_FILES:
         return True
-    # Exclude binary files based on MIME type
-    mime_type, _ = mimetypes.guess_type(file_path)
-    if mime_type is not None and not mime_type.startswith('text'):
+    # Exclude binary files
+    if is_binary(file_path):
         return True
     return False
-
 
 def traverse_directory(root_dir):
     collected_files = []

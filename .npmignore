@@ -1,0 +1,16 @@
+# Exclude source files
+src/
+# Configuration files
+rollup.config.js
+tsconfig.json
+tsconfig.app.tsbuildinfo
+tsconfig.node.tsbuildinfo
+# Exclude scripts and development files
+script.py
+script/
+.gitignore
+.DS_Store
+.vscode/
+.idea/
+node_modules/
+coverage/

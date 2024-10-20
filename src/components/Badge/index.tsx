@@ -1,12 +1,12 @@
 import { twJoin, twMerge } from "tailwind-merge";
 
-interface BadgeProps {
+export interface BadgeProps {
     children: string;
     className?: string;
     variant?: 'square' | 'pill';
     color?: 'gray' | 'red' | 'yellow' | 'green' | 'blue' | 'indigo' | 'purple' | 'pink';
     [x: string]: any;
-}
+};
 
 const colors = {
     gray: 'bg-[#F3F4F6] text-[#1F2937]',
@@ -17,7 +17,7 @@ const colors = {
     indigo: 'bg-[#E0E7FF] text-[#3730A3]',
     purple: 'bg-[#EDE9FE] text-[#5B21B6]',
     pink: 'bg-[#FCE7F3] text-[#9D174D]',
-}
+};
 
 export default function Badge({ children, className, variant = 'square', color = 'gray', ...rest }: BadgeProps): React.ReactElement {
     return (
@@ -31,5 +31,5 @@ export default function Badge({ children, className, variant = 'square', color =
         )} {...rest}>
             {children}
         </div>
-    )
+    );
 }

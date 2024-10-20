@@ -60,13 +60,13 @@ export default function PieChart({
                                         fill={color}
                                         onMouseMove={(event) => {
                                             const coords = localPoint(event) || { x: 0, y: 0 };
-                                            const x = coords.x - width / 2;
-                                            const y = coords.y - height / 2;
+                                            // const x = coords.x - width / 2;
+                                            // const y = coords.y - height / 2;
                             
                                             showTooltip({
-                                            tooltipData: arc.data,
-                                            tooltipLeft: coords.x,
-                                            tooltipTop: coords.y,
+                                                tooltipData: arc.data,
+                                                tooltipLeft: coords.x,
+                                                tooltipTop: coords.y,
                                             });
                                         }}
                                         onMouseLeave={() => hideTooltip()}

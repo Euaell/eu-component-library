@@ -4,13 +4,14 @@ import error from './error.svg';
 import success from './success.svg';
 import warning from './warning.svg';
 
-interface BannerProps {
+
+export interface BannerProps {
 	title: string;
 	children?: string;
 	className?: string;
 	status?: 'info' | 'success' | 'warning' | 'error';
     [x: string]: any;
-}
+};
 
 const colors = {
 	error: {
@@ -33,7 +34,7 @@ const colors = {
 		title_container: 'text-[#1E40AF]',
 		icon: info,
 	},
-}
+};
 
 export default function Banner({ title, children, className, status = 'info', ...rest }: BannerProps): React.ReactElement {
 
@@ -57,5 +58,5 @@ export default function Banner({ title, children, className, status = 'info', ..
 			</div>
 			{children}
 		</div>
-	)
+	);
 }

@@ -1,13 +1,38 @@
 {
-	"name": "geek-component-library",
-	"private": true,
-	"version": "0.0.0",
+	"name": "@geek/eu-react",
+	"version": "1.0.0",
+	"description": "A collection of reusable React components.",
 	"type": "module",
+	"keywords": [
+		"react",
+		"components",
+		"charts",
+		"library"
+	],
+	"author": "Euael M. Eshete <euaelmeko@gmail.com>",
+	"license": "MIT",
+	"main": "dist/index.js",
+	"module": "dist/index.esm.js",
+	"types": "dist/index.d.ts",
+	"files": [
+		"dist",
+		"LICENSE",
+		"README.md"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Euaell/geek-component-library.git"
+	},
 	"scripts": {
 		"dev": "vite",
-		"build": "tsc -b && vite build",
 		"lint": "eslint .",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"build": "rollup -c",
+		"prepublishOnly": "yarn build"
+	},
+	"peerDependencies": {
+		"react": "^17.0.0 || ^18.0.0",
+		"react-dom": "^17.0.0 || ^18.0.0"
 	},
 	"dependencies": {
 		"@visx/visx": "^3.11.0",
@@ -17,6 +42,12 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.11.1",
+		"@rollup/plugin-commonjs": "^28.0.1",
+		"@rollup/plugin-image": "^3.0.3",
+		"@rollup/plugin-json": "^6.1.0",
+		"@rollup/plugin-node-resolve": "^15.3.0",
+		"@rollup/plugin-typescript": "^12.1.1",
+		"@rollup/plugin-url": "^8.0.2",
 		"@types/react": "^18.3.10",
 		"@types/react-dom": "^18.3.0",
 		"@vitejs/plugin-react": "^4.3.2",
@@ -26,9 +57,20 @@
 		"eslint-plugin-react-refresh": "^0.4.12",
 		"globals": "^15.9.0",
 		"postcss": "^8.4.47",
+		"rollup": "^4.24.0",
+		"rollup-plugin-dts": "^6.1.1",
+		"rollup-plugin-postcss": "^4.0.2",
 		"tailwindcss": "^3.4.14",
-		"typescript": "^5.5.3",
+		"tslib": "^2.8.0",
+		"typescript": "^5.6.3",
 		"typescript-eslint": "^8.7.0",
 		"vite": "^5.4.8"
+	},
+	"exports": {
+		".": {
+			"import": "./dist/index.esm.js",
+			"require": "./dist/index.js",
+			"types": "./dist/index.d.ts"
+		}
 	}
 }

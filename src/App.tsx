@@ -8,11 +8,11 @@ function App() {
 	return (
 		<>
 		
-			{/* <BannerAndBadge /> */}
+			<BannerAndBadge />
 
-			{/* <CardDisplay /> */}
+			<CardDisplay />
 
-			{/* <TestimonialDisplay /> */}
+			<TestimonialDisplay />
 
 			<LineChartDisplay />
 

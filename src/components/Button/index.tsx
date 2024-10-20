@@ -1,12 +1,18 @@
 
-interface ButtonProps {
-    children: Readonly<React.ReactNode>;
-}
+import { twMerge } from "tailwind-merge";
 
-export default function Button({ children }: ButtonProps): React.ReactElement {
+interface ButtonProps {
+    className?: string;
+    children: Readonly<React.ReactNode>;
+};
+
+export default function Button({ children, className }: ButtonProps): React.ReactElement {
     return (
-        <button>
+        <button className={twMerge(
+            "p-2 px-4 text-sm rounded-md shadow-sm",
+            className
+        )}>
             {children}
         </button>
-    )
+    );
 }
