@@ -27,7 +27,7 @@ export default function Testimonial({ image, quote, author, position, className,
                     className="w-full h-auto md:absolute md:top-0 md:left-0 md:h-full md:w-auto object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"
                 />
             </div>
-            <div className="p-6 md:p-8 md:pl-[calc(33.33%+2rem)] lg:pl-[calc(25%+2rem)] flex flex-col justify-center">
+            <div className="p-6 md:p-8 flex flex-col justify-center">
                 <blockquote className="text-white text-lg md:text-xl mb-4 relative">
                     <span className="absolute -left-4 -top-2 text-4xl opacity-50">"</span>
                     {quote}
