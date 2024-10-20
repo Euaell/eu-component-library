@@ -159,4 +159,20 @@ This library is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Project Indexing
 ```bash
 python .\script.py -d . -o project_content.txt
-``` 
+```
+
+## Testing
+ To test that the exported library works as expected, create a new React project and import the components from the library. Here's a simple example to get you started:
+
+- First export the library using yalc
+```bash
+yarn global add yalc
+yalc publish
+```
+- Then in the new project, install the library using yalc
+```bash
+yalc add @geek/eu-react
+yarn install
+```
+- Now you can import and use the components in your project
+

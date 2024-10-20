@@ -1,25 +1,17 @@
-
 {
 	"compilerOptions": {
-		"target": "ES5",
+		"target": "ES2019",
 		"module": "ESNext",
-		"declaration": true,
-		"emitDeclarationOnly": true,
-		"declarationDir": "dist/types",
-		"outDir": "dist",
-		"jsx": "react",
+		"lib": ["ES2019", "DOM", "DOM.Iterable"],
+		"jsx": "react-jsx",
+		"declaration": false,
 		"strict": true,
 		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"moduleResolution": "node",
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true,
-		"moduleResolution": "node",
-		"resolveJsonModule": true,
-		"isolatedModules": true,
-		"noEmit": true,
+		"resolveJsonModule": true
 	},
-	"include": ["src/**/*"],
-	"references": [
-		{ "path": "./tsconfig.app.json" },
-		{ "path": "./tsconfig.node.json" }
-	]
-  }
+	"include": ["src/**/*"]
+}
