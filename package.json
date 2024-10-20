@@ -1,5 +1,5 @@
 {
-	"name": "@geek/eu-react",
+	"name": "@euael/eu-react",
 	"version": "1.0.0",
 	"description": "A collection of reusable React components.",
 	"type": "module",
@@ -21,7 +21,7 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/Euaell/geek-component-library.git"
+		"url": "git+https://github.com/Euaell/geek-component-library.git"
 	},
 	"scripts": {
 		"dev": "vite",
@@ -72,6 +72,6 @@
 			"require": "./dist/index.js",
 			"types": "./dist/index.d.ts"
 		},
-        "./index.css": "./dist/index.css"
+		"./index.css": "./dist/index.css"
 	}
 }
