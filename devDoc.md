@@ -1,6 +1,6 @@
 # Developer Documentation
 
-This document provides information for developers working on the Geek React Component Library. It includes setup instructions, testing, and deployment guidelines.
+This document provides information for developers working on the EU React Component Library. It includes setup instructions, testing, and deployment guidelines.
 
 ## Table of Contents
 
@@ -19,8 +19,8 @@ To set up the project locally for development:
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/Euaell/geek-component-library.git
-   cd geek-component-library
+   git clone https://github.com/Euaell/eu-component-library.git
+   cd eu-component-library
    ```
 
 2. **Install Dependencies**

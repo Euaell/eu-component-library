@@ -1,13 +1,15 @@
 {
 	"name": "@euael/eu-react",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "A collection of reusable React components.",
 	"type": "module",
 	"keywords": [
 		"react",
 		"components",
 		"charts",
-		"library"
+		"library",
+        "tailwindcss",
+        "visx"
 	],
 	"author": "Euael M. Eshete <euaelmeko@gmail.com>",
 	"license": "MIT",
@@ -21,8 +23,9 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/Euaell/geek-component-library.git"
+		"url": "git+https://github.com/Euaell/eu-component-library.git"
 	},
+    "homepage": "portfolio.euaell.me",
 	"scripts": {
 		"dev": "vite",
 		"lint": "eslint .",

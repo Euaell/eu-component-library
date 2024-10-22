@@ -1,10 +1,10 @@
-# Geek React Component Library
+# EU React Component Library
 
 [![npm version](https://img.shields.io/npm/v/@euael/eu-react)](https://www.npmjs.com/package/@euael/eu-react)
 [![license](https://img.shields.io/npm/l/@euael/eu-react)](https://github.com/Euaell/euael-component-library/blob/main/LICENSE)
 [![downloads](https://img.shields.io/npm/dt/@euael/eu-react)](https://www.npmjs.com/package/@euael/eu-react)
 
-Welcome to the Geek React Component Library! This library provides a collection of reusable, customizable React components to help you build your applications faster and with consistent styling.
+Welcome to the EU React Component Library! This library provides a collection of reusable, customizable React components to help you build your applications faster and with consistent styling.
 
 ## Table of Contents
 
@@ -396,9 +396,9 @@ This library is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Additional Resources
 
-- **Repository:** [GitHub - Euaell/geek-component-library](https://github.com/Euaell/geek-component-library)
-- **Issues:** Please report any issues on the [GitHub Issues](https://github.com/Euaell/geek-component-library/issues) page.
+- **Repository:** [GitHub - Euaell/eu-component-library](https://github.com/Euaell/eu-component-library)
+- **Issues:** Please report any issues on the [GitHub Issues](https://github.com/Euaell/eu-component-library/issues) page.
 
 ---
 
-Thank you for choosing the Geek React Component Library! We hope these components help you build your applications more efficiently. If you have any questions or need assistance, feel free to reach out.
+Thank you for choosing the EU React Component Library! We hope these components help you build your applications more efficiently. If you have any questions or need assistance, feel free to reach out.
