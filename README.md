@@ -11,17 +11,18 @@ Welcome to the EU React Component Library! This library provides a collection of
 - [Installation](#installation)
 - [Getting Started](#getting-started)
 - [Components](#components)
-  - [Badge](#badge)
-  - [Banner](#banner)
-  - [Card](#card)
-  - [Testimonials](#testimonials)
-  - [Charts](#charts)
-    - [LineChart](#linechart)
-    - [AreaChart](#areachart)
-    - [BarChart](#barchart)
-    - [PieChart](#piechart)
-    - [ScatterPlot](#scatterplot)
-  - [Toast](#toast)
+	- [Badge](#badge)
+	- [Banner](#banner)
+	- [Card](#card)
+	- [Testimonials](#testimonials)
+	- [Charts](#charts)
+		- [LineChart](#linechart)
+		- [AreaChart](#areachart)
+		- [BarChart](#barchart)
+		- [PieChart](#piechart)
+		- [ScatterPlot](#scatterplot)
+	- [Toast](#toast)
+	- [Navbar](#navbar)
 - [License](#license)
 
 ## Installation
@@ -46,12 +47,12 @@ import '@euael/eu-react/index.css'; // Import the CSS styles
 import { Badge } from '@euael/eu-react';
 
 function App() {
-  return (
-    <div>
-      <h1>Hello, World!</h1>
-      <Badge color="green">Success</Badge>
-    </div>
-  );
+	return (
+		<div>
+			<h1>Hello, World!</h1>
+			<Badge color="green">Success</Badge>
+		</div>
+	);
 }
 
 export default App;
@@ -109,10 +110,10 @@ import { Banner } from '@euael/eu-react';
 
 - `title` (string, required): The title text of the banner.
 - `status` (string, optional): Determines the color scheme and icon. Options:
-  - `'info'` (default)
-  - `'success'`
-  - `'warning'`
-  - `'error'`
+	- `'info'` (default)
+	- `'success'`
+	- `'warning'`
+	- `'error'`
 - `children` (string or ReactNode, optional): Additional content to display in the banner.
 - `className` (string, optional): Custom CSS classes for additional styling.
 
@@ -120,7 +121,7 @@ import { Banner } from '@euael/eu-react';
 
 ```jsx
 <Banner status="success" title="Operation Successful">
-  Your operation was completed successfully.
+	Your operation was completed successfully.
 </Banner>
 ```
 
@@ -146,7 +147,7 @@ import { Card } from '@euael/eu-react';
 
 ```jsx
 <Card title="Welcome" icon={<YourIconComponent />}>
-  <p>This is an example of a card content.</p>
+	<p>This is an example of a card content.</p>
 </Card>
 ```
 
@@ -173,10 +174,10 @@ import { Testimonials } from '@euael/eu-react';
 
 ```jsx
 <Testimonials
-  image="path/to/image.jpg"
-  quote="This product exceeded my expectations."
-  author="Jane Doe"
-  position="CEO of Company"
+	image="path/to/image.jpg"
+	quote="This product exceeded my expectations."
+	author="Jane Doe"
+	position="CEO of Company"
 />
 ```
 
@@ -219,18 +220,18 @@ import { LineChart } from '@euael/eu-react';
 
 ```jsx
 const data = [
-  { x: new Date(2023, 0, 1), y: 50 },
-  { x: new Date(2023, 0, 2), y: 30 },
-  // ...
+	{ x: new Date(2023, 0, 1), y: 50 },
+	{ x: new Date(2023, 0, 2), y: 30 },
+	// ...
 ];
 
 <LineChart
-  data={data}
-  width={600}
-  height={400}
-  xScaleType="time"
-  strokeColor="#10B981" // Tailwind green-500
-  curveType="monotoneX"
+	data={data}
+	width={600}
+	height={400}
+	xScaleType="time"
+	strokeColor="#10B981" // Tailwind green-500
+	curveType="monotoneX"
 />
 ```
 
@@ -254,11 +255,11 @@ Inherits all `LineChart` props with the addition of:
 
 ```jsx
 <AreaChart
-  data={data}
-  width={600}
-  height={400}
-  xScaleType="time"
-  areaColor="#3B82F6" // Tailwind blue-500
+	data={data}
+	width={600}
+	height={400}
+	xScaleType="time"
+	areaColor="#3B82F6" // Tailwind blue-500
 />
 ```
 
@@ -283,17 +284,17 @@ import { BarChart } from '@euael/eu-react';
 
 ```jsx
 const data = [
-  { category: 'A', value1: 30, value2: 20 },
-  { category: 'B', value1: 20, value2: 80 },
-  // ...
+	{ category: 'A', value1: 30, value2: 20 },
+	{ category: 'B', value1: 20, value2: 80 },
+	// ...
 ];
 
 <BarChart
-  data={data}
-  keys={['value1', 'value2']}
-  x0Accessor={(d) => d.category}
-  width={600}
-  height={400}
+	data={data}
+	keys={['value1', 'value2']}
+	x0Accessor={(d) => d.category}
+	width={600}
+	height={400}
 />
 ```
 
@@ -317,15 +318,15 @@ import { PieChart } from '@euael/eu-react';
 
 ```jsx
 const data = [
-  { label: 'Apples', value: 10 },
-  { label: 'Bananas', value: 20 },
-  // ...
+	{ label: 'Apples', value: 10 },
+	{ label: 'Bananas', value: 20 },
+	// ...
 ];
 
 <PieChart
-  data={data}
-  width={400}
-  height={400}
+	data={data}
+	width={400}
+	height={400}
 />
 ```
 
@@ -351,15 +352,15 @@ import { ScatterPlot } from '@euael/eu-react';
 
 ```jsx
 const data = [
-  { x: 10, y: 20 },
-  { x: 15, y: 10 },
-  // ...
+	{ x: 10, y: 20 },
+	{ x: 15, y: 10 },
+	// ...
 ];
 
 <ScatterPlot
-  data={data}
-  width={600}
-  height={400}
+	data={data}
+	width={600}
+	height={400}
 />
 ```
 
@@ -382,11 +383,94 @@ import { Toast } from '@euael/eu-react';
 
 ```jsx
 <Toast>
-  <p>This is a toast message.</p>
+	<p>This is a toast message.</p>
 </Toast>
 ```
 
 **Note:** For advanced usage, consider integrating with a state management solution or context to control the display of toasts globally.
+
+### Navbar
+A responsive navigation bar component that supports dropdown menus and mobile navigation.
+
+#### Import
+
+```jsx
+import { NavBar, NavMenu, NavItem, NavDropdown } from '@euael/eu-react';
+```
+
+#### Props
+
+- `children` (ReactNode, required): The content to display inside the navbar.
+- `className` (string, optional): Custom CSS classes for additional styling.
+
+#### Usage
+
+```jsx
+// In your component or App.js
+import React from 'react';
+import { NavBar, NavMenu, NavItem, NavDropdown } from '@euael/eu-react';
+import Logo from './path-to-your-logo.svg';
+
+function App() {
+	return (
+		<NavBar logo={<img src={Logo} alt="Logo" />}>
+			<NavMenu>
+				<NavItem href="/">Home</NavItem>
+				<NavDropdown title="About Us">
+					<NavItem href="/about/mission">Our Mission</NavItem>
+					<NavItem href="/about/team">Team</NavItem>
+					<NavDropdown title="More">
+						<NavItem href="/about/faq">FAQ</NavItem>
+						<NavItem href="/about/contact">Contact</NavItem>
+					</NavDropdown>
+				</NavDropdown>
+				<NavItem href="/contact">Contact</NavItem>
+			</NavMenu>
+		</NavBar>
+	)
+}
+
+export default App;
+```
+
+#### Props
+
+##### `NavBar` Props
+
+- `logo` (ReactNode, optional): The logo or branding element displayed on the left side.
+- `children` (ReactNode, optional): Typically a `NavMenu` component containing navigation items.
+- `className` (string, optional): Custom CSS classes for additional styling.
+
+##### `NavMenu` Props
+
+- `children` (ReactNode, required): One or more `NavItem` or `NavDropdown` components.
+- `className` (string, optional): Custom CSS classes for additional styling.
+
+##### `NavItem` Props
+
+- `href` (string, required): The URL or route the item should link to.
+- `children` (ReactNode, required): The text or content of the navigation item.
+- `className` (string, optional): Custom CSS classes for additional styling.
+- `onClick` (function, optional): Click handler function.
+
+##### `NavDropdown` Props
+
+- `title` (string, required): The text displayed on the dropdown trigger.
+- `children` (ReactNode, required): One or more `NavItem` components.
+- `buttonClassName` (string, optional): Custom CSS classes for the trigger button.
+- `className` (string, optional): Custom CSS classes for the dropdown menu.
+
+#### Customization
+
+- **Styling:** Uses Tailwind CSS classes for styling. You can override styles using the `className` props.
+- **Responsive Behavior:** The navigation bar is responsive out of the box. On mobile devices, it displays a hamburger menu that toggles the navigation links.
+
+
+#### Important Notes:
+
+- Remember to import `@euael/eu-react/index.css` in your main entry file to include the necessary styles.
+
+
 
 ## License
 
