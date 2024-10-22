@@ -13,3 +13,5 @@ export { default as AreaChart } from './components/Charts/AreaChart';
 export { default as BarChart } from './components/Charts/BarChart';
 export { default as PieChart } from './components/Charts/PieChart';
 export { default as ScatterPlot } from './components/Charts/ScatterPlot';
+export { default as NavBar } from './components/NavBar';
+export { NavMenu, NavItem, NavDropdown } from './components/NavBar/Navigation';

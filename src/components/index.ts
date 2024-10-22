@@ -11,3 +11,5 @@ export { default as AreaChart } from './Charts/AreaChart'
 export { default as BarChart } from './Charts/BarChart'
 export { default as PieChart } from './Charts/PieChart'
 export { default as ScatterPlot } from './Charts/ScatterPlot'
+export { default as NavBar } from './NavBar';
+export { NavMenu, NavItem, NavDropdown } from './NavBar/Navigation';

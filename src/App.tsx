@@ -1,5 +1,5 @@
 import './App.css'
-import { AreaChart, Badge, Banner, BarChart, Card, LineChart, PieChart, ScatterPlot, Testimonials, Toast } from './components'
+import { AreaChart, Badge, Banner, BarChart, Card, LineChart, NavBar, NavDropdown, NavItem, NavMenu, PieChart, ScatterPlot, Testimonials, Toast } from './components'
 import testSvg from './test.svg'
 import testimonialImg from './testimonial-image.png'
 
@@ -24,7 +24,30 @@ function App() {
 
 			<ScatterPlotDisplay />
 
+			<NavBarTest />
+
 		</>
+	)
+}
+
+function NavBarTest() {
+	return (
+		<NavBar
+			logo={<img src={testSvg} alt="Logo" />}
+		>
+			<NavMenu>
+				<NavItem href="/">Home</NavItem>
+				<NavDropdown title="About Us">
+					<NavItem href="/about/mission">Our Mission</NavItem>
+					<NavItem href="/about/team">Team</NavItem>
+					<NavDropdown title="More">
+						<NavItem href="/about/faq">FAQ</NavItem>
+						<NavItem href="/about/contact">Contact</NavItem>
+					</NavDropdown>
+				</NavDropdown>
+				<NavItem href="/contact">Contact</NavItem>
+			</NavMenu>
+		</NavBar>
 	)
 }
 
