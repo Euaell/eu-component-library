@@ -1,8 +1,10 @@
 # EU React Component Library
 
-[![npm version](https://img.shields.io/npm/v/@euael/eu-react)](https://www.npmjs.com/package/@euael/eu-react)
-[![license](https://img.shields.io/npm/l/@euael/eu-react)](https://github.com/Euaell/euael-component-library/blob/main/LICENSE)
-[![downloads](https://img.shields.io/npm/dt/@euael/eu-react)](https://www.npmjs.com/package/@euael/eu-react)
+[![npm version](https://img.shields.io/npm/v/@euael/eu-react?style=flat-square)](https://www.npmjs.com/package/@euael/eu-react)
+[![license](https://img.shields.io/npm/l/@euael/eu-react?style=flat-square)](https://github.com/Euaell/euael-component-library/blob/main/LICENSE)
+[![NPM weekly Downloads](https://img.shields.io/npm/dw/%40euael%2Feu-react?style=flat-square)](https://www.npmjs.com/package/@euael/eu-react)
+[![NPM Monthly Downloads](https://img.shields.io/npm/dm/%40euael%2Feu-react?style=flat-square)](https://www.npmjs.com/package/@euael/eu-react)
+
 
 Welcome to the EU React Component Library! This library provides a collection of reusable, customizable React components to help you build your applications faster and with consistent styling.
 
